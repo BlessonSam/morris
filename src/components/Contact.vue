@@ -1,7 +1,7 @@
 <template>
     <q-page dark class="container pt-20 pb-10 space-y-20 text-center">
 
-         <div class="text-4xl  text-center text-bigText">Contact Us</div>
+         <div class="text-4xl  text-center text-brand">Contact Us</div>
 
          <div class="w-full flex flex-wrap space-y-20 lg:space-y-0 lg:flex-nowrap lg:space-x-5 lg:divide-x divide-gray-700"> 
           <div class="space-y-10 w-full lg:mr-5">
@@ -11,7 +11,7 @@
                  <q-input dark color="sectionSubTitle" v-model="email" rounded outlined type="email" label="Email" />
                  <q-input dark color="sectionSubTitle" v-model="phone" rounded outlined type="tel" label="Phone Number" />
                  <q-input dark color="sectionSubTitle" v-model="message" rounded outlined type="textarea" label="Message" />
-                 <q-btn dark @click="submitClicked" rounded color="sectionSubTitle" class="text-black">Send Message</q-btn>
+                 <q-btn dark @click="submitClicked" rounded no-caps color="sectionSubTitle" class="text-black">Send Message</q-btn>
               </div>
           </div>
 
@@ -55,7 +55,7 @@ export default {
                     "opposite HDFC /AXIS Bank ,Near H P Petrol Pump",
                     "PETTAH,TRIVANDRUM-24"
                 ],
-                email:"contact@morrisacademy.com",
+                email:"morrisacademy@morrismorris.in",
                 phoneNumbers:[
                     "9745251362",
                     "9349366924"

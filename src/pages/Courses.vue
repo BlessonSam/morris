@@ -25,10 +25,41 @@
 </template>
 
 <script>
+import { api } from 'boot/axios'
+import { ref } from 'vue'
+import { useQuasar } from 'quasar'
+
 export default {
+
+    setup () {
+  const $q = useQuasar()
+  const data = ref(null)
+
+  function loadData () {
+      console.log("running loadData")
+    api.get('/courses/')
+      .then((response) => {
+          console.log("success",response)
+        data.value = response.data
+      })
+      .catch(() => {
+          console.log('error')
+        $q.notify({
+          color: 'negative',
+          position: 'top',
+          message: 'Loading failed',
+          icon: 'report_problem'
+        })
+      })
+  }
+
+  console.log(data);
+
+  return { data, loadData }
+   },   
   data() {
       return {
-           products:[
+           products: [
         {
           id:"dhgfgfd56456",
           title:"IELTS (ONLINE AND CLASSROOM)",
@@ -83,6 +114,10 @@ export default {
         path:`/courses/${productId}`
       })
     },
+  },
+
+  mounted(){
+      this.loadData();
   }
 }
 </script>

@@ -16,7 +16,9 @@
              <a href="#contact" class="router-link-active">Contact</a>
          </scrollactive> -->
           
-          <router-link  v-for="link in links" :key="link.name"  :to="link.path" :class="{'active-link' : $route.path.includes(link.path)}">{{link.name}}</router-link>
+          <a v-for='link in links' :key="link.label" :href='link.href' :class="{'active_link': $route.hash==link.hash  || link.label=='Courses' && $route.path.includes('courses')}">
+         <span>{{link.label}}</span>
+       </a>
          
         </div>
 
@@ -73,12 +75,14 @@
       <div class="flex flex-center p-10">
          <q-icon name="close" size="sm" class="absolute-top-right m-5 cursor-pointer" @click="rightDrawerOpen=false"/>
          <div class="space-y-8 text-lg absolute-center">
-                    <div
+                     <div
                     v-for="link in links"
-                    :key="link.name"
-                    class="flex items-center justify-center text-gray-400"
+                    :key="link.label"
+                    class="flex items-center justify-center"
                   >
-                    <router-link  :to="link.path" :class="{'active-link' : $route.path.includes(link.path)}">{{link.name}}</router-link>
+                    <a :href="link.href" :class="{'active_link': $route.hash==link.hash || $route.path.includes('courses')}">
+                      <span>{{ link.label }}</span>
+                    </a>
                   </div>
                 </div>
       </div>
@@ -141,23 +145,44 @@ export default defineComponent({
     return {
      
      links:[
-       {
-         name:"Home",
-         path:"/home#hero"
-       },
-       {
-         name:"Courses",
-          path:"/courses"
-       },
+      //  {
+      //    name:"Home",
+      //    path:"/home#hero"
+      //  },
+      //  {
+      //    name:"Courses",
+      //     path:"/courses"
+      //  },
        
-       {
-         name:"Blog",
-         path:"/blog"
-       },
-       {
-         name:"Videos",
-         path:"/videos"
-       },
+      //  {
+      //    name:"Blog",
+      //    path:"/blog"
+      //  },
+      //  {
+      //    name:"Videos",
+      //    path:"/videos"
+      //  },
+
+      {
+          hash:'#hero',
+          label:'Home',
+          href:'home#hero'
+        },
+        {
+          hash:'#courses',
+          label:'Courses',
+          href:'home#courses'
+        },
+        {
+          hash:'#about_us',
+          label:'About Us',
+          href:'home#about_us'
+        },
+         {
+          hash:'#contact_us',
+          label:'Contact Us',
+          href:'home#contact_us'
+        },
      ],
      
     }

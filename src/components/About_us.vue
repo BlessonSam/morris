@@ -4,7 +4,7 @@
 
 
    <div class="pt-20 pb-10 space-y-10 text-center flex flex-col justify-center container">
-       <div class="text-4xl text-bigText">About Us</div>
+       <div class="text-4xl text-brand">About Us</div>
        <div v-html="aboutUsContent"  class="text-sm text-body mx-auto" style="max-width:800px">
         
          
@@ -13,7 +13,7 @@
 
    </div>
    
-   <div class="py-10 container space-y-10">
+   <!-- <div class="py-10 container space-y-10">
       <div class="text-center space-y-3">
         <div class="text-2xl text-bigText">Our Team</div>
         <div class="text-sm text-sectionSubTitle">Meet our exceptionally talented and experienced team</div>
@@ -27,13 +27,13 @@
               <div class="flex justify-evenly w-full text-sectionSubTitle">
                 <router-link v-for="link in member.links" :key="link.path"  :to="link.path">
                     <q-icon size="sm"  :name="link.icon" class="cursor-pointer text-body hover:text-sectionSubTitle" />
-                    <!-- <span :class="link.icon" class="text-body hover:text-sectionSubTitle"></span> -->
+                   
                 </router-link>
                 
               </div>
          </div>
       </div>
-   </div>
+   </div> -->
       
   </div>
 </template>
