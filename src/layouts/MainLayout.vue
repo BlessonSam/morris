@@ -80,7 +80,7 @@
                     :key="link.label"
                     class="flex items-center justify-center"
                   >
-                    <a :href="link.href" :class="{'active_link': $route.hash==link.hash || $route.path.includes('courses')}">
+                    <a :href="link.href" :class="{'active_link': $route.hash==link.hash || link.label=='Courses' && $route.path.includes('courses')}">
                       <span>{{ link.label }}</span>
                     </a>
                   </div>
