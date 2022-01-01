@@ -4,7 +4,7 @@
            <div class="text-semibold text-4xl text-bigText">Our English Learning Products</div>
            <div class="text-xs text-sectionSubTitle">Our specialised programmes in ENGLISH </div>
        </div>
-       <div class="container pt-10 grid grid-cols-2 sm:grid-cols-2  md:grid-cols-3 2xl:grid-cols-4 gap-12">
+       <div class="container pt-10 grid grid-cols-1 sm:grid-cols-2  md:grid-cols-3 2xl:grid-cols-4 gap-12">
             <div v-for="product in products" :key="product.title" dark class="m-3 md:m-5 lg:m-7 p-10 rounded-2xl flex content-between flex-wrap bg-dark  hover:shadow-2xl space-y-8 overflow-hidden" style="max-width:300px; min-width:200px; max-height:600px; min-height:300px;">
            <div class="space-y-3 w-full overflow-hidden text-ellipsis" style="max-height:200px;">
               <div class="text-2xl font-semibold cursor-pointer text-sectionTitle" @click="goToProduct(product.id)">{{product.title}}</div>

@@ -25,7 +25,6 @@
          
           <q-btn
                 @click="rightDrawerOpen = !rightDrawerOpen"
-                class=" text-black"
                 flat
                 rounded
                 icon="menu"
@@ -67,7 +66,7 @@
       </q-toolbar>
     </q-header>
 
-     <q-drawer  v-model="rightDrawerOpen" side="right" bordered>
+     <q-drawer dark  v-model="rightDrawerOpen" side="right" bordered>
       <!-- drawer content -->
      
 
@@ -77,11 +76,9 @@
                     <div
                     v-for="link in links"
                     :key="link.name"
-                    class="flex items-center justify-center"
+                    class="flex items-center justify-center text-gray-400"
                   >
-                    <router-link :to="link.path" class="">
-                      <span>{{ link.name }}</span>
-                    </router-link>
+                    <router-link  :to="link.path" :class="{'active-link' : $route.path.includes(link.path)}">{{link.name}}</router-link>
                   </div>
                 </div>
       </div>
@@ -171,7 +168,7 @@ export default defineComponent({
 
 <style>
 .active-link  {
-  @apply border-b-2 border-brand text-gray-400 pb-1;
+  @apply border-b-2 border-brand text-gray-100 pb-1;
  
 }
 </style>
