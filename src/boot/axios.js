@@ -13,7 +13,7 @@ const api = axios.create({
   headers: {
     'Content-Type': 'application/json',
     'Accept': 'application/json',
-  //  'Access-Control-Allow-Origin': *,
+  //  'Access-Control-Allow--Origin': *,
   },
 })
 
@@ -29,4 +29,4 @@ export default boot(({ app }) => {
   //       so you can easily perform requests against your app's API
 })
 
-export { api }
+export { axios, api }
