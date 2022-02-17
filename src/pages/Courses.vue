@@ -56,8 +56,6 @@
         </div>
       </div>
     </div>
-
-    {{ data }}
   </q-page>
 </template>
 
@@ -91,64 +89,7 @@ export default {
     return { data, loadData };
   },
   data() {
-    return {
-      products: [
-        {
-          id: "dhgfgfd56456",
-          title: "IELTS (ONLINE AND CLASSROOM)",
-          content:
-            "Lorem ipsum dolor sit amet, consectetur adipis cingelit. Etsssssssssssss sssssssss ssssssssss ssssssssssssss sssssssssssss ssssssss sssssssssss sssssssss ssssss sssssssss ssss ssssss sssss ssss iam lacinia elit et placerat finibus. Praesent justo metus, pharetra vel nibh sit amet, tincidunt posuere nulla.",
-        },
-        {
-          id: "dhgfgfd56456",
-          title: "OET (ONLINE AND CLASSROOM)",
-          content:
-            "Lorem ipsum dolor sit amet, consectetur adipis cingelit. Etiam lacinia elit et placerat finibus. Praesent justo metus, pharetra vel nibh sit amet, tincidunt posuere nulla.",
-        },
-        {
-          id: "dhgfgfd56456",
-          title: "COMMUNICATON SKILLS",
-          content:
-            "Lorem ipsum dolor sit amet, consectetur adipis cingelit. Etiam lacinia elit et placerat finibus. Praesent justo metus, pharetra vel nibh sit amet, tincidunt posuere nulla.",
-        },
-        {
-          id: "dhgfgfd56456",
-          title: "IELTS (ONLINE AND CLASSROOM)",
-          content:
-            "Lorem ipsum dolor sit amet, consectetur adipis cingelit. tra vel nibh sit amet, tincidunt posuere nulla.",
-        },
-        {
-          id: "dhgfgfd56456",
-          title: "OET (ONLINE AND CLASSROOM)",
-          content:
-            "Lorem ipsum dolor sit amet, consectetur adipis cingelit. Etiam lacinia elit et placerat finibus. Praesent justo metus, pharetra vel nibh sit amet, tincidunt posuere nulla.",
-        },
-        {
-          id: "dhgfgfd56456",
-          title: "COMMUNICATON SKILLS",
-          content:
-            "Lorem ipsum dolor sit amet, consectetur adipis cingelit. Etiam lacinia elit et placerat finibus. Praesent justo metus, pharetra vel nibh sit amet, tincidunt posuere nulla.",
-        },
-        {
-          id: "dhgfgfd56456",
-          title: "IELTS (ONLINE AND CLASSROOM)",
-          content:
-            "Lorem ipsum dolor sit amet, consectetur adipis cingelit. Etiam lacinia elit et placerat finibus. Praesent justo metus, pharetra vel nibh sit amet, tincidunt posuere nulla.",
-        },
-        {
-          id: "dhgfgfd56456",
-          title: "OET (ONLINE AND CLASSROOM)",
-          content:
-            "Lorem ipsum dolor sit amet, consectetur adipis cingelit. Etiam lacinia elit et placerat finibus. Praesent justo metus, pharetra vel nibh sit amet, tincidunt posuere nulla.",
-        },
-        {
-          id: "dhgfgfd56456",
-          title: "COMMUNICATON SKILLS",
-          content:
-            "Lorem ipsum dolor sit amet, consectetur adipis cingelit. Etiam lacinia elit et placerat finibus. Praesent justo metus, pharetra vel nibh sit amet, tincidunt posuere nulla.",
-        },
-      ],
-    };
+    return {};
   },
   methods: {
     goToProduct(productId) {

@@ -61,14 +61,19 @@
         <div class="text-xl font-semibold text-sectionSubTitle">
           Better yet, see us in person!
         </div>
-        <div class="mx-auto space-y-5" style="max-width: 500px">
+
+        <div
+          v-if="data && Object.keys(data).length"
+          class="mx-auto space-y-5"
+          style="max-width: 500px"
+        >
           <div class="space-y-2 text-body">
-            <div class="font-semibold">{{ address.firstLine }}</div>
-            <div v-for="line in address.lines" :key="line">{{ line }}</div>
+            <div class="font-semibold">{{ data.title }}</div>
+            <div v-for="line in data.addressLines" :key="line">{{ line }}</div>
           </div>
-          <div class="text-body">{{ address.email }}</div>
+          <div class="text-body">{{ data.email }}</div>
           <div class="space-y-2 text-body">
-            <div v-for="number in address.phoneNumbers" :key="number" class="">
+            <div v-for="number in data.contactNos" :key="number" class="">
               {{ number }}
             </div>
           </div>
@@ -90,9 +95,24 @@ export default {
 
     function loadData() {
       api
-        .get("/courses/")
+        .get("/aboutus/")
+
         .then((response) => {
-          data.value = response.data;
+          let dataObj = response.data[0];
+          let contactObj = {
+            ...dataObj,
+            addressLines: [
+              dataObj.first_line,
+              dataObj.second_line,
+              dataObj.third_line,
+              dataObj.fourth_line,
+              dataObj.fifth_line,
+            ].filter((x) => x),
+
+            contactNos: [dataObj.contact1, dataObj.contact2].filter((x) => x),
+          };
+
+          data.value = contactObj;
         })
         .catch(() => {
           $q.notify({
@@ -112,23 +132,43 @@ export default {
       email: "",
       message: "",
       phone: "",
-      address: {
-        firstLine: "Morris Anglo-Indian English Academy",
-        lines: [
-          "TC 13/175/1, ARCANGELS",
-          "NALUMUKKU JUNCTION ,Pattoor –Airport Road",
-          "opposite HDFC /AXIS Bank ,Near H P Petrol Pump",
-          "PETTAH,TRIVANDRUM-24",
-        ],
-        email: "morrisacademy@morrismorris.in",
-        phoneNumbers: ["9745251362", "9349366924"],
-      },
     };
   },
   methods: {
     submitClicked() {
-      this.name = this.email = this.message = this.phone = "";
+      this.sendQuery();
     },
+
+    sendQuery() {
+      const $q = useQuasar();
+      api
+        .post("/add/query/", {
+          name: this.name,
+          email: this.email,
+          message: this.message,
+          phno: this.phone,
+        })
+
+        .then((response) => {
+          this.name = this.email = this.message = this.phone = "";
+        })
+        .catch(() => {
+          $q.notify({
+            color: "negative",
+            position: "top",
+            message: "Query submission failed",
+            icon: "report_problem",
+          });
+        });
+    },
+  },
+
+  updated() {
+    this.loadData();
+  },
+
+  mounted() {
+    this.loadData();
   },
 };
 </script>
