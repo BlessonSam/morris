@@ -2,11 +2,14 @@
 
 english learning
 
-##PreRequisites
+## PreRequisites
+
 install nvm (ref https://github.com/nvm-sh/nvm#installing-and-updating)
 
 then run 
+```bash
 nvm install 16.13.0
+```
 
 ## Install the dependencies
 ```bash
