@@ -82,11 +82,12 @@
       style="margin-top: -136px; padding-top: 250px"
     >
       <div style="max-width: 700px">
+        <div class="italic mb-8 text-brand">Masters of English</div>
         <div class="text-6xl font-thin text-bigText">
-          MORRIS ANGLO - INDIAN ENGLISH ACADEMY
+          <span>MORRIS</span> ANGLO-INDIAN ENGLISH ACADEMY
         </div>
-        <div class="font-semibold text-sectionSubTitle italic mt-10">
-          Trusted by the language itself.
+        <div class="font-thin text-sectionSubTitle mt-12">
+          POWER <i>&nbsp; YOUR &nbsp;</i> ENGLISH
         </div>
         <div class="flex flex-center">
           <div class="space-y-5 mt-40 md:mt-30 lg:mt-20">
