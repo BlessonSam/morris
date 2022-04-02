@@ -4,11 +4,33 @@
       class="pt-20 pb-10 space-y-10 text-center flex flex-col justify-center container"
     >
       <div class="text-4xl text-bigText">About Us</div>
-      <div
-        v-html="aboutUsContent"
-        class="text-sm text-body mx-auto"
-        style="max-width: 800px"
-      ></div>
+      <div class="text-sm text-body mx-auto space-y-5" style="max-width: 800px">
+        <p>
+          <span class="text-italic font-semibold"
+            >The ARCANGELS Anglo–Indian Pre-School</span
+          >,established some 17 years ago in the year 2004, by lady edu-
+          entrepreneur Yasmin Ann Morris, pioneered the concept of providing
+          Pre-schoolers and Kindergartners with high quality education and care
+          ,all within the framework of English as an additional first language.
+        </p>
+
+        <p class="text-brand">
+          As a natural corollary
+          <span class="font-bold">Morris Anglo–Indian English Academy</span>
+          was born with the laudable objective of teaching English as a Second
+          Language to aspiring English Speakers and Practitioners .
+        </p>
+
+        <p>
+          <span class="font-bold">Morris Anglo–Indian English Academy</span>
+          will take you into the fascinating world of English by creating an
+          environment that effortlessly internalise grammar ,vocabulary ,reading
+          ,writing and speaking skills, all with the objective of providing you
+          with a well rounded knowledge of the English Language and readying you
+          to face any situation where knowledge of the English Language is
+          essential.
+        </p>
+      </div>
     </div>
 
     <div class="py-10 container space-y-10">
@@ -18,6 +40,7 @@
           Meet our exceptionally talented and experienced team
         </div>
       </div>
+      {{ members }}
       <div class="flex flex-wrap justify-center">
         <div
           v-for="(member, i) in members"
@@ -52,7 +75,7 @@ export default defineComponent({
     const $q = useQuasar();
     const members = ref(null);
 
-    function loadData() {
+    function loadTeamData() {
       api
         .get("/teams/")
 
@@ -69,17 +92,11 @@ export default defineComponent({
         });
     }
 
-    return { members, loadData };
-  },
-  data() {
-    return {
-      aboutUsContent:
-        "Morris Anglo-Indian English Academy will power you into that elite class of English speakers and practitioners by teaching you the English Language quickly, easily and effectively.<br><br>ARCANGELS Anglo–Indian Pre-School ,established some 15 years ago in the year 2004, by lady edu- entrepreneur Yasmin Ann Morris, pioneered the concept of providing Pre-schoolers and Kindergartners with high quality education and care ,all within the framework of English.<br><br>Morris Anglo-Indian English Academy will take you into the fascinating world of English by creating an environment that effortlessly internalise grammar,vocabulary,reading,writing and speaking skills, all with the objective of providing you with a well rounded knowledge of the English Language and readying you to face any situation where knowledge of the English Language is essential",
-    };
+    return { members, loadTeamData };
   },
 
   mounted() {
-    this.loadData();
+    this.loadTeamData();
   },
 });
 </script>

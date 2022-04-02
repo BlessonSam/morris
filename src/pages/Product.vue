@@ -28,7 +28,7 @@
       <div class="text-lg text-sectionSubTitle mb-2">Topics</div>
       <div
         class="text-body text-sm"
-        v-for="topic in course.topics.map((x) => x.title)"
+        v-for="topic in course.topics.split('\r\n').filter((x) => x)"
         :key="topic"
       >
         * {{ topic }}

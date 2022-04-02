@@ -36,7 +36,7 @@
           <div
             class="text-sm text-sectionSubTitle text-ellipsis overflow-hidden"
           >
-            {{ product.content }}
+            {{ product.subtitle }}
           </div>
         </div>
 

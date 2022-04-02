@@ -114,9 +114,10 @@
             full confidence in facing any situation where knowledge of the
             English language is paramount. <br /><br />
 
-            Morris Anglo-Indian English Academy is proud to announce that it has
-            a bouquet of Programmes and Modules that caters to every student’s
-            English language requirement, in all areas conceivable.<br />
+            <span class="font-bold">Morris Anglo–Indian English Academy</span>
+            is proud to announce that it has a bouquet of Programmes and Modules
+            that caters to every student’s English language requirement, in all
+            areas conceivable.<br />
 
             <br />Our professional Anglo-Indian Trainers create an environment
             that helps the student acquire grammar ,vocabulary ,reading ,writing

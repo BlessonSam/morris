@@ -11,14 +11,22 @@
         </div>
         <div class="mx-auto space-y-5" style="max-width: 500px">
           <q-input
+            ref="nameRef"
+            lazy-rules
             dark
             color="sectionSubTitle"
             rounded
             outlined
             v-model="name"
             label="Full Name"
+            :rules="[
+              (val) =>
+                val.length >= 3 || 'Name should contain atleast 3 characters',
+            ]"
           />
           <q-input
+            ref="emailRef"
+            lazy-rules
             dark
             color="sectionSubTitle"
             v-model="email"
@@ -26,17 +34,31 @@
             outlined
             type="email"
             label="Email"
+            :rules="[
+              (val) =>
+                /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(val) ||
+                'Enter correct email address. Example: me@example.com',
+            ]"
           />
           <q-input
+            ref="phnoRef"
+            lazy-rules
             dark
             color="sectionSubTitle"
-            v-model="phone"
+            v-model="phno"
             rounded
             outlined
             type="tel"
             label="Phone Number"
+            :rules="[
+              (val) =>
+                val.length == 10 ||
+                'Phone number should have exactly 10 digits.',
+            ]"
           />
           <q-input
+            ref="messageRef"
+            lazy-rules
             dark
             color="sectionSubTitle"
             v-model="message"
@@ -44,6 +66,11 @@
             outlined
             type="textarea"
             label="Message"
+            :rules="[
+              (val) =>
+                val.length >= 10 ||
+                'Message should containe atleast 10 characters.',
+            ]"
           />
           <q-btn
             dark
@@ -62,20 +89,20 @@
           Better yet, see us in person!
         </div>
 
-        <div
-          v-if="data && Object.keys(data).length"
-          class="mx-auto space-y-5"
-          style="max-width: 500px"
-        >
+        <div class="mx-auto space-y-5" style="max-width: 500px">
           <div class="space-y-2 text-body">
-            <div class="font-semibold">{{ data.title }}</div>
-            <div v-for="line in data.addressLines" :key="line">{{ line }}</div>
-          </div>
-          <div class="text-body">{{ data.email }}</div>
-          <div class="space-y-2 text-body">
-            <div v-for="number in data.contactNos" :key="number" class="">
-              {{ number }}
+            <div class="font-semibold text-brand">
+              Morris Anglo-Indian English Academy
             </div>
+            <div>TC 13/175/1, ARCANGELS</div>
+            <div>NALUMUKKU JUNCTION ,Pattoor –Airport Road</div>
+            <div>opposite HDFC /AXIS Bank ,Near H P Petrol Pump</div>
+            <div>PETTAH,TRIVANDRUM-24</div>
+          </div>
+          <div class="text-body">morrisacademy@morrismorris.in</div>
+          <div class="space-y-2 text-body">
+            <div class="">9745251362</div>
+            <div>9349366924</div>
           </div>
         </div>
       </div>
@@ -91,68 +118,67 @@ import { useQuasar } from "quasar";
 export default {
   setup() {
     const $q = useQuasar();
-    const data = ref(null);
+    let name = ref("");
+    let email = ref("");
+    let message = ref("");
+    let phno = ref("");
 
-    function loadData() {
-      api
-        .get("/aboutus/")
+    const nameRef = ref(null);
+    const emailRef = ref(null);
+    const messageRef = ref(null);
+    const phnoRef = ref(null);
 
-        .then((response) => {
-          let dataObj = response.data[0];
-          let contactObj = {
-            ...dataObj,
-            addressLines: [
-              dataObj.first_line,
-              dataObj.second_line,
-              dataObj.third_line,
-              dataObj.fourth_line,
-              dataObj.fifth_line,
-            ].filter((x) => x),
+    // const data = ref(null);
 
-            contactNos: [dataObj.contact1, dataObj.contact2].filter((x) => x),
-          };
+    // function loadData() {
+    //   api
+    //     .get("/aboutus/")
 
-          data.value = contactObj;
-        })
-        .catch(() => {
-          $q.notify({
-            color: "negative",
-            position: "top",
-            message: "Loading failed",
-            icon: "report_problem",
-          });
-        });
-    }
+    //     .then((response) => {
+    //       let dataObj = response.data[0];
+    //       let contactObj = {
+    //         ...dataObj,
+    //         addressLines: [
+    //           dataObj.first_line,
+    //           dataObj.second_line,
+    //           dataObj.third_line,
+    //           dataObj.fourth_line,
+    //           dataObj.fifth_line,
+    //         ].filter((x) => x),
 
-    return { data, loadData };
-  },
-  data() {
-    return {
-      name: "",
-      email: "",
-      message: "",
-      phone: "",
-    };
-  },
-  methods: {
-    submitClicked() {
-      this.sendQuery();
-    },
+    //         contactNos: [dataObj.contact1, dataObj.contact2].filter((x) => x),
+    //       };
 
-    sendQuery() {
+    //       data.value = contactObj;
+    //     })
+    //     .catch(() => {
+    //       $q.notify({
+    //         color: "negative",
+    //         position: "top",
+    //         message: "Loading failed",
+    //         icon: "report_problem",
+    //       });
+    //     });
+    // }
+
+    function sendQuery() {
       const $q = useQuasar();
       api
         .post("/add/query/", {
-          name: this.name,
-          email: this.email,
-          message: this.message,
-          phno: this.phone,
+          name: name.value,
+          email: email.value,
+          message: message.value,
+          phno: phno.value,
         })
 
         .then((response) => {
-          this.name = this.email = this.message = this.phone = "";
+          name.value = email.value = message.value = phno.value = "";
+          nameRef.value.resetValidation();
+          emailRef.value.resetValidation();
+          messageRef.value.resetValidation();
+          phnoRef.value.resetValidation();
         })
-        .catch(() => {
+        .catch((error) => {
           $q.notify({
             color: "negative",
             position: "top",
@@ -160,15 +186,25 @@ export default {
             icon: "report_problem",
           });
         });
+    }
+
+    return {
+      name,
+      email,
+      message,
+      phno,
+      sendQuery,
+      nameRef,
+      emailRef,
+      messageRef,
+      phnoRef,
+    };
+  },
+
+  methods: {
+    submitClicked() {
+      this.sendQuery();
     },
-  },
-
-  updated() {
-    this.loadData();
-  },
-
-  mounted() {
-    this.loadData();
   },
 };
 </script>
