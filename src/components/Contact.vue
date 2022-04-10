@@ -1,6 +1,6 @@
 <template>
   <q-page dark class="container pt-20 pb-10 space-y-20 text-center">
-    <div class="text-4xl text-center text-brand">Contact Us</div>
+    <div class="text-4xl text-center text-bigText">Contact Us</div>
 
     <div
       class="w-full flex flex-wrap space-y-20 lg:space-y-0 lg:flex-nowrap lg:space-x-5 lg:divide-x divide-gray-700"
