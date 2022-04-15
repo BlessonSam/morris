@@ -8,7 +8,7 @@ import axios from 'axios'
 // "export default () => {}" function below (which runs individually
 // for each client)
 const api = axios.create({ 
-  baseURL: 'https://blessonsam.pythonanywhere.com/',
+  baseURL: 'http://admin.morrisenglishacademy.com:8000/',
   timeout: 1000,
   headers: {
     'Content-Type': 'application/json',
