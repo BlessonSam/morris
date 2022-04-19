@@ -8,7 +8,7 @@ import axios from 'axios'
 // "export default () => {}" function below (which runs individually
 // for each client)
 const api = axios.create({ 
-  baseURL: 'http://admin.morrisenglishacademy.com:8000/',
+  baseURL: 'http://localhost:8000/',
   timeout: 1000,
   headers: {
     'Content-Type': 'application/json',
@@ -29,4 +29,4 @@ export default boot(({ app }) => {
   //       so you can easily perform requests against your app's API
 })
 
-export { axios, api }
+export { axios, api };
