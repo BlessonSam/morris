@@ -4,7 +4,7 @@
   "description": "english learning",
   "productName": "morris",
   "author": "blesson sam",
-  "private": true,
+  "homepage": ".",
   "scripts": {
     "lint": "eslint --ext .js,.vue ./",
     "test": "echo \"No test specified\" && exit 0"
