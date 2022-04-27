@@ -40,7 +40,7 @@
           Meet our exceptionally talented and experienced team
         </div>
       </div>
-      {{ members }}
+
       <div class="flex flex-wrap justify-center">
         <div
           v-for="(member, i) in members"
