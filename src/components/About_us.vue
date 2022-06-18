@@ -4,7 +4,10 @@
       class="pt-20 pb-10 space-y-10 text-center flex flex-col justify-center container"
     >
       <div class="text-4xl text-bigText">About Us</div>
-      <div class="text-sm text-body mx-auto space-y-5" style="max-width: 800px">
+      <div
+        class="text-base text-body mx-auto space-y-5"
+        style="max-width: 800px"
+      >
         <p>
           <span class="text-italic font-semibold"
             >The ARCANGELS Anglo–Indian Pre-School</span
@@ -36,7 +39,7 @@
     <div class="py-10 container space-y-10">
       <div class="text-center space-y-3">
         <div class="text-2xl text-bigText">Our Team</div>
-        <div class="text-sm text-sectionSubTitle">
+        <div class="text-base text-sectionSubTitle">
           Meet our exceptionally talented and experienced team
         </div>
       </div>

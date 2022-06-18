@@ -2,11 +2,16 @@
   <q-page dark class="py-10">
     <div dark class="container text-center pb-10 pt-20 space-y-3">
       <div class="text-semibold text-4xl text-sectionSubTitle">Blog</div>
-      <div class="text-xs text-sectionSubTitle">
+      <div class="text-sm text-sectionSubTitle">
         Articles by our team and students
       </div>
     </div>
+
+    <div v-if="!articles?.length" class="container pt-10 text-sectionSubTitle">
+      No Articles Found!
+    </div>
     <div
+      v-if="articles?.length"
       class="container pt-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-12"
     >
       <!-- <div class="text-white">{{ articles }}</div> -->
@@ -24,7 +29,7 @@
           <div class="font-semibold text-bigText text-2xl">
             {{ article.title }}
           </div>
-          <div class="text-sm text-sectionTitle">{{ article.subtitle }}</div>
+          <div class="text-base text-sectionTitle">{{ article.subtitle }}</div>
           <div class="font-thin text-xs text-sectionSubTitle">
             {{ article.written_on }}
           </div>

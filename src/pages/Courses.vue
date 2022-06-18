@@ -4,7 +4,7 @@
       <div class="text-semibold text-4xl text-bigText">
         Our English Learning Products
       </div>
-      <div class="text-xs text-sectionSubTitle">
+      <div class="text-sm text-sectionSubTitle">
         Our specialised programmes in ENGLISH
       </div>
     </div>

@@ -17,7 +17,7 @@
       <div
         v-for="(section, i) in article.section[0].split('\r\n\r\n')"
         :key="`section-${i}`"
-        class="text-body"
+        class="text-body text-base"
       >
         {{ section }}
       </div>

@@ -12,12 +12,12 @@
     </div>
     <div v-if="course.ideal_for">
       <div class="text-lg text-sectionSubTitle mb-1">Ideal for</div>
-      <div class="text-body text-sm">{{ course.ideal_for }}</div>
+      <div class="text-body text-base">{{ course.ideal_for }}</div>
     </div>
     <div v-if="course.objectives" class="">
       <div class="text-lg text-sectionSubTitle mb-2">Course Objectives</div>
       <div
-        class="text-body text-sm"
+        class="text-body text-base"
         v-for="obj in course.objectives?.split('\r\n').filter((x) => x)"
         :key="obj"
       >
@@ -27,7 +27,7 @@
     <div v-if="course.topics" class="">
       <div class="text-lg text-sectionSubTitle mb-2">Topics</div>
       <div
-        class="text-body text-sm"
+        class="text-body text-base"
         v-for="topic in course.topics.split('\r\n').filter((x) => x)"
         :key="topic"
       >
@@ -36,17 +36,17 @@
     </div>
     <div v-if="course.methodology">
       <div class="text-lg text-sectionSubTitle">Methodology</div>
-      <div class="text-body text-sm">{{ course.methodology }}</div>
+      <div class="text-body text-base">{{ course.methodology }}</div>
     </div>
     <div class="">
       <div class="text-lg text-sectionSubTitle mb-2">Course Details</div>
-      <div class="text-body text-sm">
+      <div class="text-body text-base">
         > Teaching Platform : {{ course.teaching_platform }}
       </div>
-      <div class="text-body text-sm">
+      <div class="text-body text-base">
         > Number of Classes : {{ course.num_of_class }}
       </div>
-      <div class="text-body text-sm">> Duration : {{ course.duration }}</div>
+      <div class="text-body text-base">> Duration : {{ course.duration }}</div>
     </div>
   </q-page>
 </template>

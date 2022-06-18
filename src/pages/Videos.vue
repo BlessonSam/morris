@@ -2,7 +2,11 @@
   <q-page dark class="py-10">
     <div class="container text-center pb-10 pt-20 space-y-3">
       <div class="text-semibold text-4xl text-bigText">Videos</div>
-      <div class="text-xs text-sectionSubTitle">Our curated list of videos</div>
+      <div class="text-sm text-sectionSubTitle">Our curated list of videos</div>
+    </div>
+
+    <div v-if="!videoData?.length" class="container pt-10 text-sectionSubTitle">
+      No Videos Found!
     </div>
 
     <div

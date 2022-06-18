@@ -91,7 +91,7 @@
         </div>
         <div class="flex flex-center">
           <div class="space-y-5 mt-40 md:mt-30 lg:mt-20">
-            <div class="text-xs italic text-gray-500">Explore more</div>
+            <div class="text-sm italic text-gray-500">Explore more</div>
             <q-icon
               class="animate-bounce"
               name="south"
@@ -110,7 +110,7 @@
           <div class="text-4xl text-center text-bigText">
             Our English Learning Products
           </div>
-          <div class="text-center text-body">
+          <div class="text-center text-base text-body">
             Our specialised programmes in ENGLISH ensure that the student has
             full confidence in facing any situation where knowledge of the
             English language is paramount. <br /><br />
@@ -163,10 +163,12 @@
           >
             <div class="text-sm text-gray-500 text-ellipsis">
               <q-icon name="format_quote" color="brand" size="xl" />
-              <div class="font-bold text-sectionSubTitle text-sm mt-2">
+              <div class="font-bold text-sectionSubTitle text-base mt-2">
                 {{ testimonial.title }}
               </div>
-              <div class="text-justify mt-1">{{ testimonial.content }}</div>
+              <div class="text-justify mt-1 text-base">
+                {{ testimonial.content }}
+              </div>
               <!-- <q-icon name="format_quote" color="brand" size="xl" /> -->
             </div>
 
@@ -192,14 +194,14 @@
           >
         </div>
         <div class="w-full space-y-10">
-          <div class="text-body text-center md:text-left w-full">
-            It is the love for English that creates the bond between everyone
-            who was/is a part of Morris English Academy. We find ourselves
-            fortunate to have talented language experts and curious and
-            consistent learners who creates amazing articles. We feel immense
-            proud to present those contributions together as the proud pillars
-            of Morris English Academy. Check out the curated list of articles by
-            teachers and students of Morris English Academy.
+          <div class="text-body text-base text-center md:text-left w-full">
+            We are concerned here with, and consequently present to you,
+            specimens of prose in the beautiful language of English.<br /><br />
+            But let us not forget that rhythm is an intrinsic part of any
+            language, finding its way into myriad forms of expressions.<br /><br />
+            Thus in addition to some wonderfully written pieces of prose, here
+            you may occasionally be treated to the rhythm of verse, which we
+            hope will fascinate you equally as it enriches your English.
           </div>
           <div :class="{ 'flex flex-center': $q.screen.lt.md }">
             <router-link to="/blog">
@@ -219,14 +221,15 @@
     <section id="videos" class="pb-10 pt-28 mt-20 container space-y-10">
       <div class="flex flex-wrap-reverse md:flex-nowrap w-full">
         <div class="w-full space-y-10 mt-10 md:mt-0">
-          <div class="text-body text-center md:text-right w-full">
-            It is the love for English that creates the bond between everyone
-            who was/is a part of Morris English Academy. We find ourselves
-            fortunate to have talented language experts and curious and
-            consistent learners who creates amazing articles. We feel immense
-            proud to present those contributions together as the proud pillars
-            of Morris English Academy. Check out the curated list of videos by
-            the language experts in Morris English Academy.
+          <div class="text-body text-base text-center md:text-right w-full">
+            Our videos ,be it on WRITING,READING ,LISTENING or SPEAKING ,are a
+            labor of love: a passionate love for the wonderful language of
+            English.<br /><br />
+            We have borne in mind, while creating these videos ( which in turn
+            are products of extensive research and studies ), that the only
+            objective of their existence is to enrich the knowledge of the
+            student of English ,such that he or she, is able to comprehend and
+            handle the English language with greater skill and expertise .
           </div>
           <div
             :class="$q.screen.lt.md ? 'flex flex-center' : 'flex justify-end'"
