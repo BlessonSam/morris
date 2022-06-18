@@ -4,7 +4,9 @@
     <div v-if="course.subtitle" class="font-semibold text-brand text-lg">
       {{ course.subtitle }}
     </div>
-    <div v-if="course.intro" class="text-body">{{ course.intro }}</div>
+    <div v-if="course.intro" class="text-body text-base">
+      {{ course.intro }}
+    </div>
 
     <div v-if="course.rythm_of_english" class="text-body">
       <div class="text-lg text-sectionSubTitle mb-1">The RHYTHM of ENGLISH</div>
