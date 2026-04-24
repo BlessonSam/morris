@@ -1,6 +1,6 @@
 <template>
   <q-page class="py-10 text-gray-900">
-    <q-scroll-observer axis="verical" @scroll="onScroll" />
+    <q-scroll-observer axis="vertical" @scroll="onScroll" />
 
     <q-toolbar
       dark
@@ -36,8 +36,7 @@
             rounded
             icon="menu"
             dense
-          >
-          </q-btn>
+          />
         </div>
       </div>
     </q-toolbar>
@@ -50,8 +49,6 @@
       bordered
       class="h-screen"
     >
-      <!-- drawer content -->
-
       <div class="flex flex-center p-10">
         <q-icon
           name="close"
@@ -92,18 +89,12 @@
         <div class="flex flex-center">
           <div class="space-y-5 mt-40 md:mt-30 lg:mt-20">
             <div class="text-sm italic text-gray-500">Explore more</div>
-            <q-icon
-              class="animate-bounce"
-              name="south"
-              color="brand"
-              size="xl"
-            />
+            <q-icon class="animate-bounce" name="south" color="brand" size="xl" />
           </div>
         </div>
       </div>
     </section>
 
-    <!-- specialised programmes -->
     <section id="courses" class="tobottomtransparent-bg pt-28">
       <div class="py-10 pt-20 container space-y-10">
         <div class="space-y-10 mx-auto" style="max-width: 800px">
@@ -115,7 +106,7 @@
             full confidence in facing any situation where knowledge of the
             English language is paramount. <br /><br />
 
-            <span class="font-bold">Morris Anglo–Indian English Academy</span>
+            <span class="font-bold">Morris Anglo-Indian English Academy</span>
             is proud to announce that it has a bouquet of Programmes and Modules
             that caters to every student’s English language requirement, in all
             areas conceivable.<br />
@@ -140,52 +131,10 @@
       </div>
     </section>
 
-    <!--About Us -->
     <section id="about_us">
       <AboutUs />
     </section>
 
-    <!-- Testimonials -->
-    <section id="testimonials" class="pb-10 pt-28 totoptransparent-bg">
-      <div class="space-y-10 container">
-        <div class="text-4xl text-center text-sectionTitle">Testimonials</div>
-        <div class="flex flex-wrap justify-center">
-          <div
-            v-for="(testimonial, i) in testimonials"
-            :key="`testimonial${i}`"
-            class="rounded-xl shadow-3 m-3 md:m-5 p-10 space-y-5 bg-dark"
-            style="
-              max-width: 300px;
-              min-width: 100px;
-              max-height: 600px;
-              min-height: 200px;
-            "
-          >
-            <div class="text-sm text-gray-500 text-ellipsis">
-              <q-icon name="format_quote" color="brand" size="xl" />
-              <div class="font-bold text-sectionSubTitle text-base mt-2">
-                {{ testimonial.title }}
-              </div>
-              <div class="text-justify mt-1 text-base">
-                {{ testimonial.content }}
-              </div>
-              <!-- <q-icon name="format_quote" color="brand" size="xl" /> -->
-            </div>
-
-            <div class="italic space-y-1 text-right">
-              <div class="font-bold text-sectionSubTitle">
-                {{ testimonial.by_name }}
-              </div>
-              <div class="text-xs text-sectionSubTitle">
-                {{ testimonial.by_place }}
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!--Articles -->
     <section id="articles" class="pb-10 pt-28 mt-20 container space-y-10">
       <div class="flex flex-wrap md:flex-nowrap w-full space-y-10 md:space-y-0">
         <div class="text-4xl flex flex-center text-sectionTitle w-full">
@@ -217,19 +166,18 @@
       </div>
     </section>
 
-    <!--Videos -->
     <section id="videos" class="pb-10 pt-28 mt-20 container space-y-10">
       <div class="flex flex-wrap-reverse md:flex-nowrap w-full">
         <div class="w-full space-y-10 mt-10 md:mt-0">
           <div class="text-body text-base text-center md:text-right w-full">
-            Our videos ,be it on WRITING,READING ,LISTENING or SPEAKING ,are a
+            Our videos, be it on WRITING, READING, LISTENING or SPEAKING, are a
             labor of love: a passionate love for the wonderful language of
             English.<br /><br />
-            We have borne in mind, while creating these videos ( which in turn
-            are products of extensive research and studies ), that the only
+            We have borne in mind, while creating these videos (which in turn
+            are products of extensive research and studies), that the only
             objective of their existence is to enrich the knowledge of the
-            student of English ,such that he or she, is able to comprehend and
-            handle the English language with greater skill and expertise .
+            student of English, such that he or she is able to comprehend and
+            handle the English language with greater skill and expertise.
           </div>
           <div
             :class="$q.screen.lt.md ? 'flex flex-center' : 'flex justify-end'"
@@ -245,16 +193,13 @@
           </div>
         </div>
         <div class="text-4xl flex flex-center text-sectionTitle w-full">
-          <span
-            class="cursor-pointer"
-            @click="$router.push({ path: '/videos' })"
+          <span class="cursor-pointer" @click="$router.push({ path: '/videos' })"
             >Videos</span
           >
         </div>
       </div>
-    </section> -->
+    </section>
 
-    <!--Contact Us -->
     <section id="contact_us">
       <ContactUs class="mt-20" />
     </section>
@@ -263,10 +208,6 @@
 
 <script>
 import { defineComponent } from "vue";
-import { api } from "boot/axios";
-import { ref } from "vue";
-import { useQuasar } from "quasar";
-
 import ContactUs from "../components/Contact.vue";
 import AboutUs from "../components/About_us.vue";
 
@@ -277,38 +218,11 @@ export default defineComponent({
     AboutUs,
   },
 
-  setup() {
-    const $q = useQuasar();
-    const testimonials = ref(null);
-
-    function loadData() {
-      // Fetch homepage testimonials from the backend API.
-      api
-        .get("/testimonials/")
-
-        .then((response) => {
-          // Store the backend response in local component state.
-          testimonials.value = response.data;
-        })
-        .catch(() => {
-          $q.notify({
-            color: "negative",
-            position: "top",
-            message: "Loading failed",
-            icon: "report_problem",
-          });
-        });
-    }
-
-    return { testimonials, loadData };
-  },
-
   data() {
     return {
       scrollYPosition: 100,
       elHeroTop: 0,
       elCoursesTop: 0,
-      elTestimonialsTop: 0,
       elAboutUsTop: 0,
       elArticlesTop: 0,
       elVideosTop: 0,
@@ -329,11 +243,6 @@ export default defineComponent({
           hash: "#about_us",
           label: "About Us",
           href: "home#about_us",
-        },
-        {
-          hash: "#testimonials",
-          label: "Testimonials",
-          href: "home#testimonials",
         },
         {
           hash: "#articles",
@@ -361,10 +270,8 @@ export default defineComponent({
   },
 
   mounted() {
-    this.loadData();
     this.elHeroTop = document.getElementById("hero").offsetTop;
     this.elCoursesTop = document.getElementById("courses").offsetTop;
-    this.elTestimonialsTop = document.getElementById("testimonials").offsetTop;
     this.elAboutUsTop = document.getElementById("about_us").offsetTop;
     this.elArticlesTop = document.getElementById("articles").offsetTop;
     this.elVideosTop = document.getElementById("videos").offsetTop;
@@ -372,12 +279,6 @@ export default defineComponent({
   },
 
   methods: {
-    goToProduct(productId) {
-      this.$router.push({
-        path: `/products/${productId}`,
-      });
-    },
-
     selectHashValue(verticalScrollPosition) {
       if (verticalScrollPosition + 200 < this.elCoursesTop) return "#hero";
       if (
@@ -387,14 +288,9 @@ export default defineComponent({
         return "#courses";
       if (
         verticalScrollPosition + 200 >= this.elAboutUsTop &&
-        verticalScrollPosition + 200 < this.elTestimonialsTop
-      )
-        return "#about_us";
-      if (
-        verticalScrollPosition + 200 >= this.elTestimonialsTop &&
         verticalScrollPosition + 200 < this.elArticlesTop
       )
-        return "#testimonials";
+        return "#about_us";
       if (
         verticalScrollPosition + 200 >= this.elArticlesTop &&
         verticalScrollPosition + 200 < this.elVideosTop
@@ -415,9 +311,8 @@ export default defineComponent({
 
     onScroll(scrollDetails) {
       this.scrollYPosition = scrollDetails?.position?.top ?? 100;
-      let hashValue = this.selectHashValue(this.scrollYPosition);
-      this.$route.hash = hashValue;
-      let historyObj = {
+      const hashValue = this.selectHashValue(this.scrollYPosition);
+      const historyObj = {
         Title: document.title,
         Url: window.location.href.split("#")[0] + hashValue,
       };
