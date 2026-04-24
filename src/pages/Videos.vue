@@ -45,35 +45,29 @@
 </template>
 
 <script>
-import { api } from "boot/axios";
 import { ref } from "vue";
-import { useQuasar } from "quasar";
 
 export default {
   setup() {
-    const $q = useQuasar();
-    const videoData = ref(null);
+    const videoData = ref([
+      {
+        title: "English Communication Basics",
+        thumbnail: "https://placehold.co/600x400/09111f/f5f5f8?text=Video+1",
+        url: "https://www.youtube.com/embed/dQw4w9WgXcQ",
+      },
+      {
+        title: "Grammar Tips for Daily Use",
+        thumbnail: "https://placehold.co/600x400/09111f/f5f5f8?text=Video+2",
+        url: "https://www.youtube.com/embed/dQw4w9WgXcQ",
+      },
+      {
+        title: "Build Fluency with Practice",
+        thumbnail: "https://placehold.co/600x400/09111f/f5f5f8?text=Video+3",
+        url: "https://www.youtube.com/embed/dQw4w9WgXcQ",
+      },
+    ]);
 
-    function loadData() {
-      // Fetch the video catalogue from the backend API.
-      api
-        .get("/videos/")
-
-        .then((response) => {
-          // Use the backend payload directly for the video list.
-          videoData.value = response.data;
-        })
-        .catch(() => {
-          $q.notify({
-            color: "negative",
-            position: "top",
-            message: "Loading failed",
-            icon: "report_problem",
-          });
-        });
-    }
-
-    return { videoData, loadData };
+    return { videoData };
   },
   data() {
     return {
@@ -88,8 +82,5 @@ export default {
     },
   },
 
-  mounted() {
-    this.loadData();
-  },
 };
 </script>
