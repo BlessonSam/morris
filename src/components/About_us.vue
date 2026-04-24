@@ -3,44 +3,77 @@
     <div
       class="pt-20 pb-10 space-y-10 text-center flex flex-col justify-center container"
     >
-      <div class="text-4xl text-bigText">About Us</div>
+      <div class="space-y-4">
+        <div class="text-sm uppercase tracking-[0.35em] text-sectionSubTitle">
+          Masters of English
+        </div>
+        <div class="text-4xl text-bigText">M O R R I S</div>
+        <div class="text-xl font-semibold text-brand">
+          Anglo-Indian English Academy
+        </div>
+        <div class="text-lg tracking-[0.3em] text-sectionSubTitle">
+          POWER YOUR ENGLISH
+        </div>
+      </div>
       <div
         class="text-base text-body mx-auto space-y-5"
         style="max-width: 800px"
       >
         <p>
-          <span class="text-italic font-semibold"
-            >The ARCANGELS Anglo–Indian Pre-School</span
-          >,established some 17 years ago in the year 2004, by lady edu-
-          entrepreneur Yasmin Ann Morris, pioneered the concept of providing
-          Pre-schoolers and Kindergartners with high quality education and care
-          ,all within the framework of English as an additional first language.
+          An introduction to the
         </p>
 
-        <p class="text-brand">
-          As a natural corollary
-          <span class="font-bold">Morris Anglo–Indian English Academy</span>
-          was born with the laudable objective of teaching English as a Second
-          Language to aspiring English Speakers and Practitioners .
+        <p class="text-2xl font-semibold tracking-[0.2em] text-bigText">
+          M O R R I S Anglo-Indian English Academy
+        </p>
+
+        <p class="text-brand font-semibold">Established in 2015</p>
+
+        <p>
+          with over 30,000 hours of teaching experience in individually coaching
+          over 2000 students across all categories
         </p>
 
         <p>
-          <span class="font-bold">Morris Anglo–Indian English Academy</span>
-          will take you into the fascinating world of English by creating an
-          environment that effortlessly internalise grammar ,vocabulary ,reading
-          ,writing and speaking skills, all with the objective of providing you
-          with a well rounded knowledge of the English Language and readying you
-          to face any situation where knowledge of the English Language is
+          the M O R R I S Anglo-Indian English Academy will power you into that
+          elite class of English speakers and practitioners by teaching you the
+          English Language quickly, easily and effectively.
+        </p>
+
+        <p>
+          By creating an environment that helps you internalise speaking skills
+          with absolute focus on Fluency and Accent
+        </p>
+
+        <p>
+          M O R R I S Anglo-Indian English Academy will also train you for
+          Grammar and Vocabulary as well as help you enhance your reading and
+          writing skills.
+        </p>
+
+        <p>
+          All of this with the objective of providing you with a well rounded
+          knowledge of the English Language and in the process readying you to
+          face any situation where knowledge of the English Language is
           essential.
         </p>
       </div>
+
+      <!-- <div class="text-base text-body mx-auto space-y-1" style="max-width: 800px">
+        <p class="font-semibold">M O R R I S Anglo-Indian English Academy</p>
+        <p>TC 13/175/1, ARCANGELS,</p>
+        <p>NALUMUKKU JUNCTION, Pattoor - Airport Road,</p>
+        <p>opposite HDFC / AXIS Bank, Near H P Petrol Pump,</p>
+        <p>PETTAH, TRIVANDRUM-24</p>
+        <p>PH: 9745251362 9349366924</p>
+      </div> -->
     </div>
 
     <div class="py-10 container space-y-10">
       <div class="text-center space-y-3">
-        <div class="text-2xl text-bigText">Our Team</div>
+        <div class="text-2xl text-bigText">MEET OUR TRAINERS</div>
         <div class="text-base text-sectionSubTitle">
-          Meet our exceptionally talented and experienced team
+          Experienced mentors in communication, grammar, and voice training
         </div>
       </div>
 
@@ -52,6 +85,7 @@
           style="max-width: 300px"
         >
           <img
+            v-if="member.pic"
             :src="member.pic"
             class="rounded-full overflow-hidden w-36 h-36 mx-auto"
           />
@@ -59,7 +93,9 @@
             {{ member.name }}
           </div>
           <div class="font-bold text-sectionSubTitle">{{ member.title }}</div>
-          <div class="text-body">{{ member.description }}</div>
+          <div v-if="member.description" class="text-body">
+            {{ member.description }}
+          </div>
         </div>
       </div>
     </div>
@@ -68,40 +104,35 @@
 
 <script>
 import { defineComponent } from "vue";
-import { api } from "boot/axios";
-import { ref } from "vue";
-import { useQuasar } from "quasar";
 
 export default defineComponent({
   name: "About_Us",
-  setup() {
-    const $q = useQuasar();
-    const members = ref(null);
-
-    function loadTeamData() {
-      // Fetch team members from the backend API.
-      api
-        .get("/teams/")
-
-        .then((response) => {
-          // Bind the backend team list to the component state.
-          members.value = response.data;
-        })
-        .catch(() => {
-          $q.notify({
-            color: "negative",
-            position: "top",
-            message: "Loading failed",
-            icon: "report_problem",
-          });
-        });
-    }
-
-    return { members, loadTeamData };
-  },
-
-  mounted() {
-    this.loadTeamData();
+  data() {
+    return {
+      members: [
+        {
+          name: "SHANE WILFRED MORRIS",
+          title:
+            "Advocate, former Banking professional and Master teacher in English Communication",
+          description: "",
+          pic: "",
+        },
+        {
+          name: "SHANE ABLETT",
+          title:
+            "Master Grammar Teacher with over twenty years of experience in teaching GRAMMAR",
+          description: "",
+          pic: "",
+        },
+        {
+          name: "ALAN MORAIS",
+          title:
+            "Voice and English Communication Coach, Singer and musician",
+          description: "",
+          pic: "",
+        },
+      ],
+    };
   },
 });
 </script>
