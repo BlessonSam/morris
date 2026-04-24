@@ -282,10 +282,12 @@ export default defineComponent({
     const testimonials = ref(null);
 
     function loadData() {
+      // Fetch homepage testimonials from the backend API.
       api
         .get("/testimonials/")
 
         .then((response) => {
+          // Store the backend response in local component state.
           testimonials.value = response.data;
         })
         .catch(() => {

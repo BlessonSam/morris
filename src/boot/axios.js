@@ -7,13 +7,15 @@ import axios from 'axios'
 // good idea to move this instance creation inside of the
 // "export default () => {}" function below (which runs individually
 // for each client)
-const api = axios.create({ 
+// Shared client for the Morris backend API.
+const api = axios.create({
+  // Backend host used by all API requests in this app.
   baseURL: 'https://admin.morrisenglishacademy.com',
   timeout: 1000,
   headers: {
     'Content-Type': 'application/json',
     'Accept': 'application/json',
-  //  'Access-Control-Allow--Origin': *,
+    //  'Access-Control-Allow--Origin': *,
   },
 })
 

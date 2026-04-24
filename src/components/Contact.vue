@@ -131,10 +131,12 @@ export default {
     // const data = ref(null);
 
     // function loadData() {
+    //   // Fetch contact details from the backend API.
     //   api
     //     .get("/aboutus/")
 
     //     .then((response) => {
+    //       // Convert the backend contact payload into UI-friendly fields.
     //       let dataObj = response.data[0];
     //       let contactObj = {
     //         ...dataObj,
@@ -163,6 +165,7 @@ export default {
 
     function sendQuery() {
       const $q = useQuasar();
+      // Submit the contact form to the backend API.
       api
         .post("/add/query/", {
           name: name.value,
@@ -172,6 +175,7 @@ export default {
         })
 
         .then((response) => {
+          // Reset the form after the backend accepts the message.
           name.value = email.value = message.value = phno.value = "";
           nameRef.value.resetValidation();
           emailRef.value.resetValidation();

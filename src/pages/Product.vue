@@ -66,10 +66,12 @@ export default {
     const course = ref(null);
     const { productId } = route.params;
     function loadData() {
+      // Fetch the selected course details from the backend API.
       api
         .get(`/courses/${productId}`)
 
         .then((response) => {
+          // Keep the backend response as the course detail model.
           course.value = response.data;
         })
         .catch(() => {

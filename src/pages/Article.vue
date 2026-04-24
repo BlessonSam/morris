@@ -38,10 +38,12 @@ export default {
     const article = ref(null);
     const { articleId } = route.params;
     function loadData() {
+      // Fetch the selected article from the backend API.
       api
         .get(`/articles/${articleId}`)
 
         .then((response) => {
+          // Format backend data before showing it in the article view.
           article.value = response.data;
           article.value = {
             ...article.value,

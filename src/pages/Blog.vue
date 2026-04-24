@@ -50,10 +50,12 @@ export default {
     const articles = ref(null);
 
     function loadData() {
+      // Fetch article listings from the backend API.
       api
         .get("/articles/")
 
         .then((response) => {
+          // Normalize backend dates before rendering them in the UI.
           articles.value = response.data.map((x) => ({
             ...x,
             written_on: date.formatDate(x.written_on, "D MMMM YYYY"),

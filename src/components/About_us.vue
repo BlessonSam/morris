@@ -79,10 +79,12 @@ export default defineComponent({
     const members = ref(null);
 
     function loadTeamData() {
+      // Fetch team members from the backend API.
       api
         .get("/teams/")
 
         .then((response) => {
+          // Bind the backend team list to the component state.
           members.value = response.data;
         })
         .catch(() => {

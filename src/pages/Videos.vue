@@ -55,10 +55,12 @@ export default {
     const videoData = ref(null);
 
     function loadData() {
+      // Fetch the video catalogue from the backend API.
       api
         .get("/videos/")
 
         .then((response) => {
+          // Use the backend payload directly for the video list.
           videoData.value = response.data;
         })
         .catch(() => {
