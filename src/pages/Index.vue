@@ -252,7 +252,7 @@
           >
         </div>
       </div>
-    </section>
+    </section> -->
 
     <!--Contact Us -->
     <section id="contact_us">
