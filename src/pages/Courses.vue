@@ -426,8 +426,8 @@ export default {
 <style scoped>
 .courses-page-bg {
   background:
-    radial-gradient(circle at top left, rgba(251, 133, 0, 0.08), transparent 28%),
+    radial-gradient(circle at bottom left, rgba(251, 133, 0, 0.08), transparent 28%),
     radial-gradient(circle at top right, rgba(251, 133, 0, 0.05), transparent 22%),
-    linear-gradient(to bottom, #000c19 0%, #001123 42%, #000c19 100%);
+    linear-gradient(to bottom, #001123 0%, #000c19 42%, #001123 100%);
 }
 </style>
