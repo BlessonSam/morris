@@ -166,40 +166,6 @@
       </div>
     </section>
 
-    <section id="videos" class="pb-10 pt-28 mt-20 container space-y-10">
-      <div class="flex flex-wrap-reverse md:flex-nowrap w-full">
-        <div class="w-full space-y-10 mt-10 md:mt-0">
-          <div class="text-body text-base text-center md:text-right w-full">
-            Our videos, be it on WRITING, READING, LISTENING or SPEAKING, are a
-            labor of love: a passionate love for the wonderful language of
-            English.<br /><br />
-            We have borne in mind, while creating these videos (which in turn
-            are products of extensive research and studies), that the only
-            objective of their existence is to enrich the knowledge of the
-            student of English, such that he or she is able to comprehend and
-            handle the English language with greater skill and expertise.
-          </div>
-          <div
-            :class="$q.screen.lt.md ? 'flex flex-center' : 'flex justify-end'"
-          >
-            <router-link to="/videos">
-              <button
-                class="rounded-full bg-brand py-3 px-5 text-dark font-semibold"
-                :class="{ 'w-full': $q.screen.lt.sm }"
-              >
-                View Videos
-              </button>
-            </router-link>
-          </div>
-        </div>
-        <div class="text-4xl flex flex-center text-sectionTitle w-full">
-          <span class="cursor-pointer" @click="$router.push({ path: '/videos' })"
-            >Videos</span
-          >
-        </div>
-      </div>
-    </section>
-
     <section id="contact_us">
       <ContactUs class="mt-20" />
     </section>
@@ -225,7 +191,6 @@ export default defineComponent({
       elCoursesTop: 0,
       elAboutUsTop: 0,
       elArticlesTop: 0,
-      elVideosTop: 0,
       elContactUsTop: 0,
       rightDrawerOpen: false,
       navLinks: [
@@ -250,11 +215,6 @@ export default defineComponent({
           href: "home#articles",
         },
         {
-          hash: "#videos",
-          label: "Videos",
-          href: "home#videos",
-        },
-        {
           hash: "#contact_us",
           label: "Contact Us",
           href: "home#contact_us",
@@ -274,7 +234,6 @@ export default defineComponent({
     this.elCoursesTop = document.getElementById("courses").offsetTop;
     this.elAboutUsTop = document.getElementById("about_us").offsetTop;
     this.elArticlesTop = document.getElementById("articles").offsetTop;
-    this.elVideosTop = document.getElementById("videos").offsetTop;
     this.elContactUsTop = document.getElementById("contact_us").offsetTop;
   },
 
@@ -293,14 +252,9 @@ export default defineComponent({
         return "#about_us";
       if (
         verticalScrollPosition + 200 >= this.elArticlesTop &&
-        verticalScrollPosition + 200 < this.elVideosTop
-      )
-        return "#articles";
-      if (
-        verticalScrollPosition + 200 >= this.elVideosTop &&
         verticalScrollPosition + 200 < this.elContactUsTop
       )
-        return "#videos";
+        return "#articles";
       if (
         verticalScrollPosition &&
         verticalScrollPosition + 200 >= this.elContactUsTop
