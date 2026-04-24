@@ -1,102 +1,216 @@
 <template>
-  <q-page dark class="py-10">
-    <div class="container text-center pb-10 pt-20 space-y-3">
-      <div class="text-semibold text-4xl text-bigText">
-        Our English Learning Products
-      </div>
-      <div class="text-sm text-sectionSubTitle">
-        Our specialised programmes in ENGLISH
-      </div>
-    </div>
-    <div class="container pt-10 grid grid-cols-1 gap-8">
-      <div
-        v-for="course in courses"
-        :key="course.name"
-        dark
-        class="m-3 md:m-5 lg:m-7 p-10 rounded-2xl bg-dark hover:shadow-2xl space-y-8"
-        style="
-          max-width: 900px;
-          min-width: 200px;
-        "
-      >
-        <div class="space-y-2">
-          <div class="text-3xl font-semibold text-sectionTitle">
-            {{ course.name }}
+  <q-page dark class="py-10 courses-page-bg">
+    <section class="container pt-16 pb-10">
+      <div class="grid gap-8 lg:grid-cols-[1.15fr_0.85fr] items-start">
+        <div class="space-y-6">
+          <div class="inline-flex items-center rounded-full border border-gray-800 bg-[#07111d] px-4 py-2 text-xs uppercase tracking-[0.35em] text-brand">
+            English learning programmes
           </div>
-          <div class="text-sm text-sectionSubTitle">{{ course.tagline }}</div>
+
+          <div class="space-y-4 max-w-3xl">
+            <div class="text-4xl md:text-5xl font-semibold text-bigText leading-tight">
+              Our English Learning Products
+            </div>
+            <div class="text-base md:text-lg text-sectionSubTitle leading-8">
+              A focused set of online programmes designed to build grammar,
+              fluency, writing and communication skills in a way that is easy
+              to follow and practical to use.
+            </div>
+          </div>
+
+          <div class="flex flex-wrap gap-3">
+            <span class="rounded-full border border-gray-800 bg-[#07111d] px-4 py-2 text-sm text-body">
+              {{ courseCards.length }} programmes
+            </span>
+            <span class="rounded-full border border-gray-800 bg-[#07111d] px-4 py-2 text-sm text-body">
+              Online delivery
+            </span>
+            <span class="rounded-full border border-gray-800 bg-[#07111d] px-4 py-2 text-sm text-body">
+              One-to-one and workshop formats
+            </span>
+          </div>
         </div>
 
-        <div class="space-y-4 text-sm text-sectionSubTitle leading-7">
-          <p v-if="course.note"><strong>Note:</strong> {{ course.note }}</p>
-
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div>
-              <strong>Ideal for:</strong>
-              <div>{{ course.idealFor }}</div>
-            </div>
-            <div>
-              <strong>Teaching Platform:</strong>
-              <div>{{ course.teachingPlatform }}</div>
-            </div>
-            <div>
-              <strong>Nature of Course:</strong>
-              <div>{{ course.nature }}</div>
-            </div>
-            <div v-if="course.classes">
-              <strong>No. of Classes:</strong>
-              <div>{{ course.classes }}</div>
-            </div>
-            <div v-if="course.duration">
-              <strong>Duration:</strong>
-              <div>{{ course.duration }}</div>
-            </div>
-            <div v-if="course.trainingMethod">
-              <strong>Method of Training:</strong>
-              <div>{{ course.trainingMethod }}</div>
+        <div class="rounded-3xl border border-gray-800 bg-dark shadow-2xl overflow-hidden">
+          <div class="bg-[#081426] px-6 py-5 border-b border-gray-800">
+            <div class="text-sm uppercase tracking-[0.28em] text-brand">How it works</div>
+            <div class="mt-2 text-2xl font-semibold text-sectionTitle">
+              Clear structure, simple navigation
             </div>
           </div>
-
-          <div v-if="course.aim && course.aim.length">
-            <strong>Aim of the Course:</strong>
-            <ul class="list-disc pl-5 mt-1 space-y-1">
-              <li v-for="point in course.aim" :key="point">{{ point }}</li>
-            </ul>
-          </div>
-
-          <div v-if="course.topics && course.topics.length">
-            <strong>Topics:</strong>
-            <ul class="list-disc pl-5 mt-1 space-y-1">
-              <li v-for="topic in course.topics" :key="topic">{{ topic }}</li>
-            </ul>
-          </div>
-
-          <div v-if="course.objectives && course.objectives.length">
-            <strong>Objectives of the Course:</strong>
-            <ul class="list-disc pl-5 mt-1 space-y-1">
-              <li v-for="objective in course.objectives" :key="objective">
-                {{ objective }}
-              </li>
-            </ul>
-          </div>
-
-          <div v-if="course.methodology">
-            <strong>Methodology:</strong>
-            <p class="mt-1">{{ course.methodology }}</p>
-          </div>
-
-          <div v-if="course.description && course.description.length" class="space-y-3">
-            <p v-for="paragraph in course.description" :key="paragraph">
-              {{ paragraph }}
+          <div class="p-6 space-y-5 text-sm text-body leading-7">
+            <p>
+              Each course is presented as a compact learning card with the most
+              important details first, followed by aims, topics, objectives and
+              supporting notes.
             </p>
+            <div class="grid gap-3 sm:grid-cols-2">
+              <div class="rounded-2xl bg-[#09111f] p-4 border border-gray-800">
+                <div class="text-sectionTitle font-semibold">Quick comparison</div>
+                <div class="mt-1 text-sectionSubTitle">
+                  See the best fit before reading the full description.
+                </div>
+              </div>
+              <div class="rounded-2xl bg-[#09111f] p-4 border border-gray-800">
+                <div class="text-sectionTitle font-semibold">Easy scanning</div>
+                <div class="mt-1 text-sectionSubTitle">
+                  Use the sidebar links to jump straight to a programme.
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
-    </div>
+    </section>
+
+    <section class="container pb-16">
+      <div class="grid gap-10 lg:grid-cols-[minmax(0,1fr)_320px] items-start">
+        <div class="space-y-6">
+          <article
+            v-for="course in courseCards"
+            :key="course.id"
+            :id="course.id"
+            class="rounded-3xl border border-gray-800 bg-dark overflow-hidden shadow-lg hover:shadow-2xl transition-shadow"
+          >
+            <div class="border-b border-gray-800 bg-[#081426] px-6 py-5 md:px-8 md:py-6">
+              <div class="flex flex-wrap items-start justify-between gap-4">
+                <div class="space-y-2 max-w-3xl">
+                  <div class="text-2xl md:text-3xl font-semibold text-sectionTitle leading-tight">
+                    {{ course.name }}
+                  </div>
+                  <div class="text-sm md:text-base text-sectionSubTitle leading-7">
+                    {{ course.tagline }}
+                  </div>
+                </div>
+
+                <a
+                  :href="`#${course.id}`"
+                  class="inline-flex items-center rounded-full border border-gray-700 bg-[#07111d] px-4 py-2 text-xs uppercase tracking-[0.24em] text-brand"
+                >
+                  View details
+                </a>
+              </div>
+            </div>
+
+            <div class="px-6 py-6 md:px-8 md:py-8 space-y-8">
+              <div class="grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
+                <div
+                  v-for="fact in course.facts"
+                  :key="fact.label"
+                  class="rounded-2xl border border-gray-800 bg-[#09111f] p-4"
+                >
+                  <div class="text-xs uppercase tracking-[0.25em] text-brand">
+                    {{ fact.label }}
+                  </div>
+                  <div class="mt-2 text-sm text-body leading-6">
+                    {{ fact.value }}
+                  </div>
+                </div>
+              </div>
+
+              <div v-if="course.note" class="rounded-2xl border border-[#5b3a10] bg-[#221706] p-4 text-sm text-body leading-7">
+                <span class="font-semibold text-brand">Note:</span>
+                {{ course.note }}
+              </div>
+
+              <div class="grid gap-6 xl:grid-cols-[1fr_0.9fr]">
+                <div class="space-y-6">
+                  <div v-if="course.aim?.length" class="space-y-3">
+                    <div class="text-lg font-semibold text-sectionTitle">Aim of the Course</div>
+                    <ul class="space-y-2 text-sm text-body leading-7">
+                      <li v-for="point in course.aim" :key="point" class="flex gap-3">
+                        <span class="mt-2 h-2 w-2 shrink-0 rounded-full bg-brand"></span>
+                        <span>{{ point }}</span>
+                      </li>
+                    </ul>
+                  </div>
+
+                  <div v-if="course.objectives?.length" class="space-y-3">
+                    <div class="text-lg font-semibold text-sectionTitle">Objectives</div>
+                    <ul class="space-y-2 text-sm text-body leading-7">
+                      <li v-for="objective in course.objectives" :key="objective" class="flex gap-3">
+                        <span class="mt-2 h-2 w-2 shrink-0 rounded-full bg-brand"></span>
+                        <span>{{ objective }}</span>
+                      </li>
+                    </ul>
+                  </div>
+
+                  <div v-if="course.description?.length" class="space-y-3 text-sm text-body leading-7">
+                    <div class="text-lg font-semibold text-sectionTitle">Overview</div>
+                    <p v-for="paragraph in course.description" :key="paragraph">
+                      {{ paragraph }}
+                    </p>
+                  </div>
+                </div>
+
+                <div class="space-y-6">
+                  <div v-if="course.topics?.length" class="rounded-2xl border border-gray-800 bg-[#09111f] p-5 space-y-4">
+                    <div class="text-lg font-semibold text-sectionTitle">Topics</div>
+                    <div class="flex flex-wrap gap-2">
+                      <span
+                        v-for="topic in course.topics"
+                        :key="topic"
+                        class="rounded-full border border-gray-700 bg-[#07111d] px-3 py-1 text-sm text-body"
+                      >
+                        {{ topic }}
+                      </span>
+                    </div>
+                  </div>
+
+                  <div v-if="course.methodology" class="rounded-2xl border border-gray-800 bg-[#09111f] p-5 space-y-2">
+                    <div class="text-lg font-semibold text-sectionTitle">Methodology</div>
+                    <p class="text-sm text-body leading-7">
+                      {{ course.methodology }}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </article>
+        </div>
+
+        <aside class="space-y-6 lg:sticky lg:top-10">
+          <div class="rounded-3xl border border-gray-800 bg-dark overflow-hidden shadow-lg">
+            <div class="px-5 py-4 border-b border-gray-800 bg-[#081426]">
+              <div class="text-sm uppercase tracking-[0.28em] text-brand">Quick links</div>
+              <div class="mt-2 text-xl font-semibold text-sectionTitle">
+                Jump to a programme
+              </div>
+            </div>
+            <div class="p-4 space-y-2">
+              <a
+                v-for="course in courseCards"
+                :key="course.id"
+                :href="`#${course.id}`"
+                class="block rounded-2xl border border-gray-800 bg-[#09111f] px-4 py-3 text-sm text-body hover:border-brand hover:text-bigText transition-colors"
+              >
+                {{ course.shortName }}
+              </a>
+            </div>
+          </div>
+
+          <div class="rounded-3xl border border-gray-800 bg-dark p-5 space-y-4 shadow-lg">
+            <div class="text-xl font-semibold text-sectionTitle">What learners get</div>
+            <div class="space-y-3 text-sm text-body leading-7">
+              <div class="rounded-2xl bg-[#09111f] border border-gray-800 p-4">
+                Structured teaching that starts from the learner’s current level.
+              </div>
+              <div class="rounded-2xl bg-[#09111f] border border-gray-800 p-4">
+                Practical exercises that focus on speaking, writing and accuracy.
+              </div>
+              <div class="rounded-2xl bg-[#09111f] border border-gray-800 p-4">
+                Clear progression across foundational, professional and advanced needs.
+              </div>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </section>
   </q-page>
 </template>
 
 <script>
-import { ref } from "vue";
+import { computed, ref } from "vue";
 
 export default {
   setup() {
@@ -255,13 +369,65 @@ export default {
       },
     ]);
 
-    return { courses };
+    const courseCards = computed(() =>
+      courses.value.map((course) => ({
+        ...course,
+        id: course.name
+          .toLowerCase()
+          .replace(/[^a-z0-9]+/g, "-")
+          .replace(/^-+|-+$/g, ""),
+        shortName: course.name.replace(/\s*\(.*\)\s*/g, "").trim(),
+        facts: [
+          {
+            label: "Ideal for",
+            value: course.idealFor,
+          },
+          {
+            label: "Teaching platform",
+            value: course.teachingPlatform,
+          },
+          {
+            label: "Nature of course",
+            value: course.nature,
+          },
+          ...(course.classes
+            ? [
+                {
+                  label: "Classes",
+                  value: course.classes,
+                },
+              ]
+            : []),
+          ...(course.duration
+            ? [
+                {
+                  label: "Duration",
+                  value: course.duration,
+                },
+              ]
+            : []),
+          ...(course.trainingMethod
+            ? [
+                {
+                  label: "Training method",
+                  value: course.trainingMethod,
+                },
+              ]
+            : []),
+        ],
+      }))
+    );
+
+    return { courseCards };
   },
 };
 </script>
 
-<style>
-.totoptransparent-bg {
-  background-image: linear-gradient(to bottom, rgba(245, 245, 248, 0), #000c19);
+<style scoped>
+.courses-page-bg {
+  background:
+    radial-gradient(circle at top left, rgba(251, 133, 0, 0.08), transparent 28%),
+    radial-gradient(circle at top right, rgba(251, 133, 0, 0.05), transparent 22%),
+    linear-gradient(to bottom, #000c19 0%, #001123 42%, #000c19 100%);
 }
 </style>
