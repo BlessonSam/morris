@@ -9,7 +9,11 @@
         <div class="text-xl font-semibold text-sectionSubTitle">
           Drop us a line!
         </div>
-        <div class="mx-auto space-y-5" style="max-width: 500px">
+        <q-form
+          class="mx-auto space-y-5"
+          style="max-width: 500px"
+          @submit.prevent="submitClicked"
+        >
           <q-input
             ref="nameRef"
             lazy-rules
@@ -74,14 +78,15 @@
           />
           <q-btn
             dark
-            @click="submitClicked"
+            type="submit"
+            :loading="isSubmitting"
             rounded
             no-caps
             color="sectionSubTitle"
             class="text-black"
             >Send Message</q-btn
           >
-        </div>
+        </q-form>
       </div>
 
       <div class="space-y-10 w-full">
@@ -111,7 +116,6 @@
 </template>
 
 <script>
-import { api } from "boot/axios";
 import { ref } from "vue";
 import { useQuasar } from "quasar";
 
@@ -122,74 +126,62 @@ export default {
     let email = ref("");
     let message = ref("");
     let phno = ref("");
+    const isSubmitting = ref(false);
 
     const nameRef = ref(null);
     const emailRef = ref(null);
     const messageRef = ref(null);
     const phnoRef = ref(null);
 
-    // const data = ref(null);
+    async function sendQuery() {
+      const endpoint = "https://formsubmit.co/ajax/561938b53cacd77b6da1ea1302fff75b";
 
-    // function loadData() {
-    //   // Fetch contact details from the backend API.
-    //   api
-    //     .get("/aboutus/")
+      isSubmitting.value = true;
 
-    //     .then((response) => {
-    //       // Convert the backend contact payload into UI-friendly fields.
-    //       let dataObj = response.data[0];
-    //       let contactObj = {
-    //         ...dataObj,
-    //         addressLines: [
-    //           dataObj.first_line,
-    //           dataObj.second_line,
-    //           dataObj.third_line,
-    //           dataObj.fourth_line,
-    //           dataObj.fifth_line,
-    //         ].filter((x) => x),
-
-    //         contactNos: [dataObj.contact1, dataObj.contact2].filter((x) => x),
-    //       };
-
-    //       data.value = contactObj;
-    //     })
-    //     .catch(() => {
-    //       $q.notify({
-    //         color: "negative",
-    //         position: "top",
-    //         message: "Loading failed",
-    //         icon: "report_problem",
-    //       });
-    //     });
-    // }
-
-    function sendQuery() {
-      const $q = useQuasar();
-      // Submit the contact form to the backend API.
-      api
-        .post("/add/query/", {
-          name: name.value,
-          email: email.value,
-          message: message.value,
-          phno: phno.value,
-        })
-
-        .then((response) => {
-          // Reset the form after the backend accepts the message.
-          name.value = email.value = message.value = phno.value = "";
-          nameRef.value.resetValidation();
-          emailRef.value.resetValidation();
-          messageRef.value.resetValidation();
-          phnoRef.value.resetValidation();
-        })
-        .catch((error) => {
-          $q.notify({
-            color: "negative",
-            position: "top",
-            message: "Query submission failed",
-            icon: "report_problem",
-          });
+      try {
+        const response = await fetch(endpoint, {
+          method: "POST",
+          headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            name: name.value,
+            email: email.value,
+            phone: phno.value,
+            message: message.value,
+            _captcha: false,
+            _template: "table",
+            _subject: `New Contact Form Submission from ${name.value}`,
+          }),
         });
+
+        if (!response.ok) {
+          throw new Error("Failed to send message");
+        }
+
+        name.value = email.value = message.value = phno.value = "";
+        nameRef.value.resetValidation();
+        emailRef.value.resetValidation();
+        messageRef.value.resetValidation();
+        phnoRef.value.resetValidation();
+
+        $q.notify({
+          color: "positive",
+          position: "top",
+          message: "Message sent successfully",
+          icon: "check_circle",
+        });
+      } catch (error) {
+        $q.notify({
+          color: "negative",
+          position: "top",
+          message: "Could not send your message. Please try again.",
+          icon: "report_problem",
+        });
+      } finally {
+        isSubmitting.value = false;
+      }
     }
 
     return {
@@ -197,6 +189,7 @@ export default {
       email,
       message,
       phno,
+      isSubmitting,
       sendQuery,
       nameRef,
       emailRef,
